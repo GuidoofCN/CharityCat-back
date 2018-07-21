@@ -9,4 +9,5 @@ public interface CatMapper {
 	public Integer insertCat(CatPojo cat);
 	public Integer insertCatNote(CatNotePojo note);
 	public List<CatPojo> selectCatAll(LimitQuery query);
+	public CatPojo selectCatNote(String catid);
 }

@@ -47,4 +47,18 @@ public class CatService {
 			return map;
 		}
 	}
+
+	public Map<String, Object> catDetail(String catid) {
+		CatPojo note = null;
+		Map<String, Object> map = new HashMap<>();
+		if((note = mapper.selectCatNote(catid))!= null) {
+			map.put("code", "200");
+			map.put("data", note);
+			return map;
+		}else {
+			map.put("code", "404");
+			map.put("message", "资源未找到");
+			return map;
+		}
+	}
 }

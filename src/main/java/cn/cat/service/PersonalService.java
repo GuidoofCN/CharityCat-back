@@ -17,7 +17,7 @@ public class PersonalService {
 		Map<String, Object> map = new HashMap<>();
 		UserPojo man = mapper.findUserById(id);
 		if (man != null) {
-			map.put("personalInfo", man);
+			map.put("data", man);
 			map.put("code", "200");
 			return map;
 		} else {

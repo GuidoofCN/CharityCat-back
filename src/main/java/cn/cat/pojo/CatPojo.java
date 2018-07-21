@@ -17,6 +17,7 @@ public class CatPojo {
 	private String username;
 	private String adoptid;
 	private String adoptname;
+	private CatNotePojo note;
 
 	public String getCatid() {
 		return catid;
@@ -130,12 +131,20 @@ public class CatPojo {
 		this.adoptname = adoptname;
 	}
 
+	public CatNotePojo getNote() {
+		return note;
+	}
+
+	public void setNote(CatNotePojo note) {
+		this.note = note;
+	}
+
 	@Override
 	public String toString() {
 		return "CatPojo [catid=" + catid + ", catname=" + catname + ", gender=" + gender + ", pic=" + pic
 				+ ", sickness=" + sickness + ", disabled=" + disabled + ", birthday=" + birthday + ", weight=" + weight
 				+ ", len=" + len + ", varity=" + varity + ", userid=" + userid + ", username=" + username + ", adoptid="
-				+ adoptid + ", adoptname=" + adoptname + "]";
+				+ adoptid + ", adoptname=" + adoptname + ", note=" + note + "]";
 	}
 
 }

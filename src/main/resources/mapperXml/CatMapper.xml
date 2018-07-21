@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.cat.mapper.CatMapper">
+	<resultMap type="cn.cat.pojo.CatPojo" id="CatPojo">
+		<id column="catid" property="catid" />
+		<result column="catname" property="catname" />
+		<result column="gender" property="gender" />
+		<result column="pic" property="pic" />
+		<result column="sickness" property="sickness" />
+		<result column="disabled" property="disabled" />
+		<result column="birthday" property="birthday" />
+		<result column="weight" property="weight" />
+		<result column="len" property="len" />
+		<result column="varity" property="varity" />
+		<result column="userid" property="userid" />
+		<result column="username" property="username" />
+		<result column="adoptid" property="adoptid" />
+		<result column="adoptname" property="adoptname" />
+		<association resultMap="notePojo" property="note"></association>
+	</resultMap>
+	<resultMap type="cn.cat.pojo.CatNotePojo" id="notePojo">
+		<result column="catid" property="catid" />
+		<result column="posttime" property="posttime" />
+		<result column="title" property="title" />
+		<result column="content" property="content" />
+	</resultMap>
 	<insert id="insertCat" parameterType="cn.cat.pojo.CatPojo"
 		flushCache="true">
 		INSERT INTO
@@ -11,7 +34,8 @@
 	</insert>
 	<insert id="insertCatNote"
 		parameterType="cn.cat.pojo.CatNotePojo" flushCache="true">
-		INSERT INTO <![CDATA[`cat-note`]]>
+		INSERT INTO
+		`cat-note`
 		values(#{catid},#{posttime,jdbcType=DATE},#{title},#{content})
 	</insert>
 	<select id="selectCatAll" useCache="true"
@@ -19,20 +43,10 @@
 		SELECT * FROM `cat`
 		ORDER BY buildtime DESC LIMIT #{start},#{total}
 	</select>
-	<resultMap type="cn.cat.pojo.CatPojo" id="CatPojo">
-	   <id column="catid" property="catid"/>
-	   <result column="catname" property="catname"/>
-	   <result column="gender" property="gender"/>
-	   <result column="pic" property="pic"/>
-	   <result column="sickness" property="sickness"/>
-	   <result column="disabled" property="disabled"/>
-	   <result column="birthday" property="birthday"/>
-	   <result column="weight" property="weight"/>
-	   <result column="len" property="len"/>
-	   <result column="varity" property="varity"/>
-	   <result column="userid" property="userid"/>
-	   <result column="username" property="username"/>
-	   <result column="adoptid" property="adoptid"/>
-	   <result column="adoptname" property="adoptname"/>
-	</resultMap>
+	<select id="selectCatNote" parameterType="java.lang.String"
+		resultMap="CatPojo">
+		SELECT c.*, n.content , n.posttime ,n.title FROM cat c,
+		`cat-note` n WHERE
+		c.catid = #{catid} AND n.catid = #{catid}
+	</select>
 </mapper>
