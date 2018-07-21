@@ -26,6 +26,9 @@
 	<!-- 实例化mybatis的sqlFactory以及mapper扫描 -->
 	<bean class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
+		<!-- mapper的xml文件位置 -->
+		<property name="mapperLocations"
+			value="classpath*:mapperXml/*.xml"></property>
 	</bean>
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="cn.cat.mapper"></property>
@@ -45,12 +48,30 @@
 	</task:scheduled-tasks>
 	<!-- 邮箱配置 -->
 	<bean class="org.springframework.mail.javamail.JavaMailSenderImpl">
-		<property name="username" value=""></property>
-		<property name="password" value=""></property>
+		<property name="username" value="497804227@qq.com"></property>
+		<property name="password" value="fgungiauwbjubjed"></property>
 		<property name="host" value="smtp.qq.com"></property>
 		<property name="protocol" value="smtp"></property>
 		<property name="port" value="587"></property>
 		<property name="defaultEncoding" value="UTF-8"></property>
 	</bean>
-	<!-- 缓存验证码 -->
+	<!-- 事务配置 -->
+	<bean
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+		id="transactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<tx:advice transaction-manager="transactionManager"
+		id="txAdvice">
+		<tx:attributes>
+			<tx:method name="catRelease" isolation="REPEATABLE_READ"
+				propagation="REQUIRED" read-only="false" />
+		</tx:attributes>
+	</tx:advice>
+	<!-- AOP cn.cat.service.CatService -->
+	<aop:config>
+		<aop:pointcut
+			expression="execution(* cn.cat.service.*.*(..))" id="pc" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="pc" />
+	</aop:config>
 </beans>

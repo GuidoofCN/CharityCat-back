@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.cat.mapper.CatMapper">
+	<insert id="insertCat" parameterType="cn.cat.pojo.CatPojo"
+		flushCache="true">
+		INSERT INTO
+		cat(catid,catname, gender, sickness, disabled,
+		birthday, weight, len, varity,
+		userid,username) VALUES
+		(#{catid},#{catname},#{gender},#{sickness},#{disabled},#{birthday,jdbcType=DATE},#{weight},#{len},#{varity},#{userid},#{username});
+	</insert>
+	<insert id="insertCatNote"
+		parameterType="cn.cat.pojo.CatNotePojo" flushCache="true">
+		INSERT INTO <![CDATA[`cat-note`]]>
+		values(#{catid},#{posttime,jdbcType=DATE},#{title},#{content})
+	</insert>
+	<select id="selectCatAll" useCache="true"
+		parameterType="cn.cat.query.LimitQuery" resultMap="CatPojo">
+		SELECT * FROM `cat`
+		ORDER BY buildtime DESC LIMIT #{start},#{total}
+	</select>
+	<resultMap type="cn.cat.pojo.CatPojo" id="CatPojo">
+	   <id column="catid" property="catid"/>
+	   <result column="catname" property="catname"/>
+	   <result column="gender" property="gender"/>
+	   <result column="pic" property="pic"/>
+	   <result column="sickness" property="sickness"/>
+	   <result column="disabled" property="disabled"/>
+	   <result column="birthday" property="birthday"/>
+	   <result column="weight" property="weight"/>
+	   <result column="len" property="len"/>
+	   <result column="varity" property="varity"/>
+	   <result column="userid" property="userid"/>
+	   <result column="username" property="username"/>
+	   <result column="adoptid" property="adoptid"/>
+	   <result column="adoptname" property="adoptname"/>
+	</resultMap>
+</mapper>

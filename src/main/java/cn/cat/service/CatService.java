@@ -1,12 +1,14 @@
 package cn.cat.service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import cn.cat.mapper.CatMapper;
+import cn.cat.pojo.CatNotePojo;
 import cn.cat.pojo.CatPojo;
 import cn.cat.query.LimitQuery;
 import cn.cat.util.RandomIdUtil;
@@ -17,16 +19,25 @@ public class CatService {
 	private CatMapper mapper;
 
 	public Map<String, Object> catList(LimitQuery query) {
-
-		return null;
+		Map<String, Object> map = new HashMap<>();
+		List<CatPojo> list = mapper.selectCatAll(query);
+		if (!list.isEmpty()) {
+			map.put("code", "200");
+			map.put("data", list);
+			return map;
+		} else {
+			map.put("code", "404");
+			map.put("message", "请求失败");
+			return map;
+		}
 	}
 
-	public Map<String, String> catRelease(CatPojo cat) {
-		cat.setCatid(RandomIdUtil.randomOtherId());
-		Integer i = mapper.insertCat(cat);
+	public Map<String, String> catRelease(CatPojo cat, CatNotePojo note) {
+		String catid = RandomIdUtil.randomOtherId();
+		cat.setCatid(catid);
+		note.setCatid(catid);
 		Map<String, String> map = new HashMap<>();
-		System.out.println(i);
-		if (i > 0) {
+		if (mapper.insertCatNote(note) > 0 && mapper.insertCat(cat) > 0) {
 			map.put("code", "200");
 			map.put("message", "发布成功");
 			return map;

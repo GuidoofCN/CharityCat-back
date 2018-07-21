@@ -1,22 +1,28 @@
 package cn.cat.query;
 
 public class LimitQuery {
-	private String start;
-	private String total;
+	private Integer start;
+	private Integer total;
 
-	public String getStart() {
+	public Integer getStart() {
 		return start;
 	}
 
-	public void setStart(String start) {
+	public void setStart(Integer start) {
 		this.start = start;
 	}
 
-	public String getTotal() {
+	public Integer getTotal() {
 		return total;
 	}
 
-	public void setTotal(String total) {
+	public void setTotal(Integer total) {
 		this.total = total;
 	}
+
+	@Override
+	public String toString() {
+		return "LimitQuery [start=" + start + ", total=" + total + "]";
+	}
+
 }
