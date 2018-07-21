@@ -45,8 +45,8 @@
 	</task:scheduled-tasks>
 	<!-- 邮箱配置 -->
 	<bean class="org.springframework.mail.javamail.JavaMailSenderImpl">
-		<property name="username" value="497804227@qq.com"></property>
-		<property name="password" value="fgungiauwbjubjed"></property>
+		<property name="username" value=""></property>
+		<property name="password" value=""></property>
 		<property name="host" value="smtp.qq.com"></property>
 		<property name="protocol" value="smtp"></property>
 		<property name="port" value="587"></property>
