@@ -8,9 +8,9 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class TokenCache {
-	// 存储token信息集合
+	// 存储token信息集合，12233333333
 	private static ConcurrentHashMap<String, Map<String, String>> tokenInfo = new ConcurrentHashMap<>();
-	// 添加新的token信息,hour是有效几个小时
+	// 添加新的token信息,hour是有效几个小时，2333333
 	public void addToken(String userid, String token, Integer hour) {
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(new Date());
