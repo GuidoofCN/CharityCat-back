@@ -5,11 +5,10 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-//TokenCache类的作用
 public class TokenCache {
-	// 存储token信息集合，12233333333
+	// 存储token信息集合
 	private static ConcurrentHashMap<String, Map<String, String>> tokenInfo = new ConcurrentHashMap<>();
-	// 添加新的token信息,hour是有效几个小时，2333333333
+	// 添加新的token信息,hour是有效几个小时，23
 	public void addToken(String userid, String token, Integer hour) {
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(new Date());
@@ -19,7 +18,7 @@ public class TokenCache {
 		map.put("expiry", ((Long) cal.getTimeInMillis()).toString());
 		tokenInfo.put(userid, map);
 	}
-	// token有效时长计算
+	// token有效时长计算。23333qww1111www
 	public void countTokenExpiry() {
 		System.out.println(tokenInfo);
 		tokenInfo.forEach((k, v) -> {
