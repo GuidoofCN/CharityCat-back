@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.cat.mapper.UserMapper">
 	<select id="findUser" resultType="java.lang.String"
-		parameterType="cn.cat.query.UserLoginQuery">
+		parameterType="cn.cat.query.UserLoginQuery" >
 		SELECT userid FROM user WHERE
 		<if test="username!=null">
 			username = #{username} and password=#{password}
@@ -24,7 +24,7 @@
 		SELECT COUNT(*)
 		FROM user WHERE mail = #{mail}
 	</select>
-	<update id="updateUserPass" >
+	<update id="updateUserPass">
 		UPDATE user SET password = #{password} WHERE mail
 		=
 		#{mail}

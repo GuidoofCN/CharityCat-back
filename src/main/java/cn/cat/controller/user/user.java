@@ -20,11 +20,9 @@ public class user {
 	private UserService userService;
 
 	// 登录接口
-	@GetMapping("/login")
+	@PostMapping("/login")
 	public Map<String, String> login(HttpServletRequest req, UserLoginQuery query) throws Exception {
-		//return userService.login(req, query);
-		System.out.println(req.getSession().getId());
-		return null;
+		return userService.login(req, query);
 	}
 
 	// 注册接口
