@@ -8,7 +8,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class TokenCache {
 	// 存储token信息集合
 	private static ConcurrentHashMap<String, Map<String, String>> tokenInfo = new ConcurrentHashMap<>();
-	// 添加新的token信息,hour是有效几个小时，23
+	// 添加新的token信息,hour是有效几个小时
 	public void addToken(String userid, String token, Integer hour) {
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(new Date());
@@ -18,7 +18,7 @@ public class TokenCache {
 		map.put("expiry", ((Long) cal.getTimeInMillis()).toString());
 		tokenInfo.put(userid, map);
 	}
-	// token有效时长计算。23333qww1111www
+	// token有效时长计算。
 	public void countTokenExpiry() {
 		System.out.println(tokenInfo);
 		tokenInfo.forEach((k, v) -> {

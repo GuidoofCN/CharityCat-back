@@ -9,7 +9,7 @@ public class MailMessageFactory {
 	//邮箱模板
 	public static SimpleMailMessage getMailMessageTemplate(String mail,String verificatCode) {
 		SimpleMailMessage mailMessage = new SimpleMailMessage();
-		mailMessage.setFrom("497804227@qq.com");
+		mailMessage.setFrom("1209306293@qq.com");
 		mailMessage.setTo(mail);
 		mailMessage.setSentDate(new Date());
 		mailMessage.setSubject("公益猫验证码");
