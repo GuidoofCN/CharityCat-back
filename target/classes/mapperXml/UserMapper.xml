@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.cat.mapper.UserMapper">
+	<select id="findUser" resultType="java.lang.String"
+		parameterType="cn.cat.query.UserLoginQuery" >
+		SELECT userid FROM user WHERE
+		<if test="username!=null">
+			username = #{username} and password=#{password}
+		</if>
+		<if test="phone!=null">
+			phone = #{phone} and password=#{password}
+		</if>
+		<if test="mail!=null">
+			mail = #{mail} and password=#{password}
+		</if>
+	</select>
+	<insert id="insertUser" parameterType="cn.cat.pojo.UserPojo" >
+		INSERT INTO
+		user(userid,mail,username,password)
+		VALUES(#{userid},#{mail},#{username},#{password})
+	</insert>
+	<select id="findUserByMail" parameterType="java.lang.String"
+		resultType="java.lang.Integer">
+		SELECT COUNT(*)
+		FROM user WHERE mail = #{mail}
+	</select>
+	<update id="updateUserPass">
+		UPDATE user SET password = #{password} WHERE mail
+		=
+		#{mail}
+	</update>
+	<select id="findUserById" parameterType="java.lang.String"
+		resultType="cn.cat.pojo.UserPojo">
+		SELECT * FROM user WHERE userid = #{userid}
+	</select>
+	<update id="updateUserInfo" parameterType="cn.cat.pojo.UserPojo">
+		UPDATE user SET
+		username =
+		#{username},gender = #{gender} ,phone = #{phone},birthday =
+		#{birthday},local=#{local} where userid = #{userid}
+	</update>
+</mapper>
