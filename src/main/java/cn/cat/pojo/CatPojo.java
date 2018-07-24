@@ -18,7 +18,6 @@ public class CatPojo {
 	private String adoptid;
 	private String adoptname;
 	private CatNotePojo note;
-
 	public String getCatid() {
 		return catid;
 	}
