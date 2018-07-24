@@ -1,12 +1,17 @@
 package cn.cat.controller.cat;
 
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+
 import cn.cat.pojo.CatNotePojo;
 import cn.cat.pojo.CatPojo;
 import cn.cat.query.LimitQuery;
@@ -19,15 +24,20 @@ public class Cat {
 	private CatService catService;
 
 	@GetMapping("/cat-list")
-	public Map<String,Object> catList(LimitQuery query) {
+	public Map<String, Object> catList(LimitQuery query) {
 		return catService.catList(query);
 	}
+
 	@GetMapping("/cat-detail/{catid}")
-	public Map<String,Object> catDetail(@PathVariable String catid){
+	public Map<String, Object> catDetail(@PathVariable String catid) {
 		return catService.catDetail(catid);
 	}
-	@PostMapping("/cat-release")
-	public Map<String, String> catRelease(CatPojo cat,CatNotePojo note) {
-		return catService.catRelease(cat,note);
+
+	@RequestMapping("/cat-release")
+	public Map<String, String> catRelease(CatPojo cat, CatNotePojo note,HttpServletRequest req,MultipartFile file) {
+		System.out.println(file);
+		return null;
+		// return catService.catRelease(cat,note);
 	}
+
 }
