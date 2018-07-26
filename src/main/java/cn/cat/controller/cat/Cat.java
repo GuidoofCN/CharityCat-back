@@ -1,22 +1,20 @@
 package cn.cat.controller.cat;
 
 import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-
 import cn.cat.pojo.CatNotePojo;
 import cn.cat.pojo.CatPojo;
 import cn.cat.query.LimitQuery;
 import cn.cat.service.CatService;
 
+@CrossOrigin(origins="*",allowCredentials="true")
 @RestController
 @RequestMapping("/cat")
 public class Cat {
@@ -32,12 +30,9 @@ public class Cat {
 	public Map<String, Object> catDetail(@PathVariable String catid) {
 		return catService.catDetail(catid);
 	}
-
-	@RequestMapping("/cat-release")
-	public Map<String, String> catRelease(CatPojo cat, CatNotePojo note,HttpServletRequest req,MultipartFile file) {
+	@PostMapping("/cat-release")
+	public Map<String, String> catRelease(CatPojo cat, CatNotePojo note,MultipartFile file) {
 		System.out.println(file);
-		return null;
-		// return catService.catRelease(cat,note);
+		return catService.catRelease(cat,note,file);
 	}
-
 }

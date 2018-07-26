@@ -37,6 +37,6 @@
 		UPDATE user SET
 		username =
 		#{username},gender = #{gender} ,phone = #{phone},birthday =
-		#{birthday},local=#{local} where userid = #{userid}
+		#{birthday,jdbcType=DATE},local=#{local} ,pic = #{pic},password=#{password} where userid = #{userid}
 	</update>
 </mapper>

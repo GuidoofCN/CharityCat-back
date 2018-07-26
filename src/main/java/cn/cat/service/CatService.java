@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import cn.cat.mapper.CatMapper;
 import cn.cat.pojo.CatNotePojo;
@@ -32,7 +33,7 @@ public class CatService {
 		}
 	}
 
-	public Map<String, String> catRelease(CatPojo cat, CatNotePojo note) {
+	public Map<String, String> catRelease(CatPojo cat, CatNotePojo note, MultipartFile file) {
 		String catid = RandomIdUtil.randomOtherId();
 		cat.setCatid(catid);
 		note.setCatid(catid);

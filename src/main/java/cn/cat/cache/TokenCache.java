@@ -20,7 +20,6 @@ public class TokenCache {
 	}
 	// token有效时长计算。
 	public void countTokenExpiry() {
-		System.out.println(tokenInfo);
 		tokenInfo.forEach((k, v) -> {
 			Long storeTime = Long.parseLong(v.get("expiry"));
 			if (storeTime <= new Date().getTime()) {

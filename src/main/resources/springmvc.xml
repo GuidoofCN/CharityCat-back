@@ -22,4 +22,16 @@
 			<bean class="cn.cat.inteceptor.IsLogin"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>
+	<!-- 图片上传配置 -->
+	<bean
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
+		id="multipartResolver">
+	</bean>
+	<!-- 图片访问映射 -->
+	<mvc:resources location="/images/personal/"
+		mapping="/images/personal/**"></mvc:resources>
+	<mvc:resources location="/images/cat/"
+		mapping="/images/cat/**"></mvc:resources>
+	<mvc:resources location="/images/diary/"
+		mapping="/images/diary/**"></mvc:resources>
 </beans>

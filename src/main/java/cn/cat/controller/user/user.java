@@ -3,6 +3,7 @@ package cn.cat.controller.user;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,6 +13,7 @@ import cn.cat.pojo.UserPojo;
 import cn.cat.query.UserLoginQuery;
 import cn.cat.service.UserService;
 
+@CrossOrigin(origins="*",allowCredentials="true")
 @RestController
 @RequestMapping("/user")
 public class user {

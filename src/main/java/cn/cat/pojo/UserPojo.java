@@ -1,5 +1,7 @@
 package cn.cat.pojo;
 
+import java.util.Date;
+
 public class UserPojo {
 	private String userid;
 	private String username;
@@ -9,7 +11,7 @@ public class UserPojo {
 	private String password;
 	private String pic;
 	private String local;
-	private String birthday;
+	private Date birthday;
 	private Integer state;
 
 	public String getUserid() {
@@ -76,11 +78,11 @@ public class UserPojo {
 		this.local = local;
 	}
 
-	public String getBirthday() {
+	public Date getBirthday() {
 		return birthday;
 	}
 
-	public void setBirthday(String birthday) {
+	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
 	}
 

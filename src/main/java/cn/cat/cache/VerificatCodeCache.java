@@ -20,7 +20,6 @@ public class VerificatCodeCache {
 	}
 
 	public void countVerificatCodeExpiry() {
-		System.out.println(new Date().getTime() + "..." + verificatCodeCache);
 		verificatCodeCache.forEach((k, v) -> {
 			Long storeTime = Long.parseLong(v.get("expiry"));
 			if (storeTime <= new Date().getTime())
@@ -30,7 +29,6 @@ public class VerificatCodeCache {
 
 	public void removeVerificatCode(String mail) {
 		verificatCodeCache.remove(mail);
-		System.out.println("移除验证码后"+verificatCodeCache);
 	}
 
 	public String getVerificatCode(String mail) {
