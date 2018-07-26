@@ -2,26 +2,24 @@ package cn.cat.service;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.multipart.MultipartFile;
-
 import cn.cat.mapper.UserMapper;
 import cn.cat.pojo.UserPojo;
 import cn.cat.util.FileHandle;
+import cn.cat.util.UrlUtil;
 
 @Service
 public class PersonalService {
 	@Autowired
 	private UserMapper mapper;
-	private String BASEURL = "http://localhost:8080/CharityCat-back/images/personal/";
+	@Autowired
+	private UrlUtil urlUtil;
+	
 
 	public Map<String, Object> info(@PathVariable String id) {
 		Map<String, Object> map = new HashMap<>();
@@ -43,7 +41,7 @@ public class PersonalService {
 			String extension = "."+FileHandle.getExtension(picfile.getOriginalFilename());
 			String picFileName = FileHandle.getFileName()+extension;
 			File outPutPath = FileHandle.getPersonalFilePath();
-			imageUrl = BASEURL+FileHandle.transferTo(picfile, outPutPath,picFileName);
+			imageUrl = urlUtil.getPersonalBaseUrl()+FileHandle.transferTo(picfile, outPutPath,picFileName);
 			man.setPic(imageUrl);
 		}
 		Map<String, String> map = new HashMap<>();

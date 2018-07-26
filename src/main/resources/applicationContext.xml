@@ -74,4 +74,6 @@
 			expression="execution(* cn.cat.service.*.*(..))" id="pc" />
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="pc" />
 	</aop:config>
+	<!-- BaseUrl处理工具类 -->
+	<bean class="cn.cat.util.UrlUtil"></bean>
 </beans>

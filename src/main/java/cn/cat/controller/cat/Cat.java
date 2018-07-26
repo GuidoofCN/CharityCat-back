@@ -1,5 +1,6 @@
 package cn.cat.controller.cat;
 
+import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -31,8 +32,7 @@ public class Cat {
 		return catService.catDetail(catid);
 	}
 	@PostMapping("/cat-release")
-	public Map<String, String> catRelease(CatPojo cat, CatNotePojo note,MultipartFile file) {
-		System.out.println(file);
-		return catService.catRelease(cat,note,file);
+	public Map<String, Object> catRelease(CatPojo cat, CatNotePojo note,List<MultipartFile> files) {
+		return catService.catRelease(cat,note,files);
 	}
 }

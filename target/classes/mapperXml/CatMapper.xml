@@ -49,4 +49,7 @@
 		`cat-note` n WHERE
 		c.catid = #{catid} AND n.catid = #{catid}
 	</select>
+	<insert id="insertCatNotePic" parameterType="cn.cat.pojo.CatNotePicPojo" flushCache="true">
+	 INSERT INTO `cat-note-pic` VALUES(#{catid},#{pic})
+	</insert>
 </mapper>
