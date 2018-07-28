@@ -1,6 +1,7 @@
 package cn.cat.util;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.UUID;
 
 
@@ -13,6 +14,7 @@ public class RandomIdUtil {
 	}
 
 	public static String randomOtherId() {
+		cal.setTime(new Date());
 		return String.valueOf(cal.get(Calendar.YEAR)) + String.valueOf(cal.get(Calendar.MONTH) + 1)
 				+ String.valueOf(cal.get(Calendar.DATE)) + String.valueOf(cal.get(Calendar.HOUR_OF_DAY))
 				+ String.valueOf(cal.get(Calendar.MINUTE)) + String.valueOf(cal.get(Calendar.SECOND));

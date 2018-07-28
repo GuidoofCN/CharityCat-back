@@ -21,7 +21,7 @@ import cn.cat.service.CatService;
 public class Cat {
 	@Autowired
 	private CatService catService;
-
+	
 	@GetMapping("/cat-list")
 	public Map<String, Object> catList(LimitQuery query) {
 		return catService.catList(query);

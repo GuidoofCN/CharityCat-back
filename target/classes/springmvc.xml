@@ -29,7 +29,7 @@
 	</bean>
 	<!-- 图片访问映射 -->
 	<mvc:resources location="/images/personal/"
-		mapping="/images/personal/**"></mvc:resources>
+		mapping="/images/personal/**" ></mvc:resources>
 	<mvc:resources location="/images/cat/"
 		mapping="/images/cat/**"></mvc:resources>
 	<mvc:resources location="/images/diary/"

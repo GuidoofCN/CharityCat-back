@@ -20,9 +20,9 @@ public class Personal {
 	@Autowired
 	private PersonalService personalService;
 
-	@GetMapping("/info/{id}")
-	public Map<String, Object> info(@PathVariable String id) {
-		return personalService.info(id);
+	@GetMapping("/info/{userid}")
+	public Map<String, Object> info(@PathVariable String userid) {
+		return personalService.info(userid);
 	}
 
 	@PostMapping("/update")

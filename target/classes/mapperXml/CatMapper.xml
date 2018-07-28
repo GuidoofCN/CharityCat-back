@@ -45,11 +45,14 @@
 	</select>
 	<select id="selectCatNote" parameterType="java.lang.String"
 		resultMap="CatPojo">
-		SELECT c.*, n.content , n.posttime ,n.title FROM cat c,
-		`cat-note` n WHERE
-		c.catid = #{catid} AND n.catid = #{catid}
+		SELECT c.*, n.content , n.posttime ,n.title ,p.pic FROM cat
+		c,
+		`cat-note` n ,`cat-note-pic` p WHERE
+		c.catid = #{catid} AND n.catid =
+		#{catid}
 	</select>
-	<insert id="insertCatNotePic" parameterType="cn.cat.pojo.CatNotePicPojo" flushCache="true">
-	 INSERT INTO `cat-note-pic` VALUES(#{catid},#{pic})
+	<insert id="insertCatNotePic"
+		parameterType="cn.cat.pojo.CatNotePicPojo" flushCache="true">
+		INSERT INTO `cat-note-pic` VALUES(#{catid},#{pic})
 	</insert>
 </mapper>

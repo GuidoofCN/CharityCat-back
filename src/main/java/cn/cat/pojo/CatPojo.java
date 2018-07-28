@@ -1,6 +1,7 @@
 package cn.cat.pojo;
 
 import java.util.Date;
+import java.util.List;
 
 public class CatPojo {
 	private String catid;
@@ -18,6 +19,16 @@ public class CatPojo {
 	private String adoptid;
 	private String adoptname;
 	private CatNotePojo note;
+	private List<String> pics;
+	
+	public List<String> getPics() {
+		return pics;
+	}
+
+	public void setPics(List<String> pics) {
+		this.pics = pics;
+	}
+
 	public String getCatid() {
 		return catid;
 	}

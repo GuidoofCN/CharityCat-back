@@ -1,6 +1,7 @@
 package cn.cat.service;
 
 import java.io.File;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -26,6 +27,8 @@ public class CatService {
 	@Autowired
 	private UrlUtil urlUtil;
 	
+
+	
 	public Map<String, Object> catList(LimitQuery query) {
 		Map<String, Object> map = new HashMap<>();
 		List<CatPojo> list = mapper.selectCatAll(query);
@@ -50,7 +53,9 @@ public class CatService {
 				String extension = "." + FileHandle.getExtension(file.getOriginalFilename());
 				String picFileName = FileHandle.getFileName() + i + extension;
 				File outPutPath = FileHandle.getCatFilePath();
+				System.out.println(outPutPath);
 				String url = urlUtil.getCatBaseUrl() + FileHandle.transferTo(file, outPutPath, picFileName);
+				System.out.println(url);
 				imagesUrls.add(url);
 				CatNotePicPojo pic = new CatNotePicPojo();
 				pic.setCatid(catid);
@@ -61,6 +66,7 @@ public class CatService {
 		}
 		cat.setCatid(catid);
 		note.setCatid(catid);
+		note.setPosttime(new Date());
 		Map<String, Object> map = new HashMap<>();
 		if (mapper.insertCatNote(note) > 0 && mapper.insertCat(cat) > 0) {
 			map.put("code", "200");

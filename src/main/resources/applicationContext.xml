@@ -76,4 +76,8 @@
 	</aop:config>
 	<!-- BaseUrl处理工具类 -->
 	<bean class="cn.cat.util.UrlUtil"></bean>
+	<!--  -->
+	<bean class="cn.cat.util.RandomIdUtil"></bean>
+	<!--  -->
+	<bean class="java.util.HashMap"></bean>
 </beans>

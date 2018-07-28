@@ -21,9 +21,9 @@ public class PersonalService {
 	private UrlUtil urlUtil;
 	
 
-	public Map<String, Object> info(@PathVariable String id) {
+	public Map<String, Object> info(String userid) {
 		Map<String, Object> map = new HashMap<>();
-		UserPojo man = mapper.findUserById(id);
+		UserPojo man = mapper.findUserById(userid);
 		if (man != null) {
 			map.put("data", man);
 			map.put("code", "200");

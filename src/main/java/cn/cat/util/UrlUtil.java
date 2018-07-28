@@ -6,19 +6,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class UrlUtil {
 	@Autowired
 	private  HttpServletRequest request;
+	private String baseUrl = "http://21567yq397.imwork.net:25107";
 
 	public  String getCatBaseUrl() {
-		return request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+		return baseUrl
 				+ request.getContextPath() + "/images/cat/";
 	}
 
 	public  String getPersonalBaseUrl() {
-		return request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+		return baseUrl
 				+ request.getContextPath() + "/images/personal/";
 	}
 
 	public  String getDiaryBaseUrl() {
-		return request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+		return baseUrl
 				+ request.getContextPath() + "/images/diary/";
 	}
 
