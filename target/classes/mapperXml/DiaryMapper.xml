@@ -1,5 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.cat.mapper.DiaryMapper">
+	<resultMap type="cn.cat.pojo.Diary" id="Diary">
+		<id column="diaryid" property="diaryid" />
+		<result column="posttime" property="posttime" />
+		<result column="title" property="title" />
+		<result column="content" property="content" />
+		<result column="catid" property="catid" />
+	    <result column="catname" property="catname" />
+		<result column="userid" property="userid" />
+		<result column="username" property="username" />
+<!-- 		<association property="CatPojo" javaType="cn.cat.pojo.CatPojo">
+		 <id column="catid" property="catid" />
+		 <result column="catname" property="catname" />
+		 <result column="userid" property="userid" />
+		 <result column="username" property="username" />
+		</association> -->
+	</resultMap>
 
+
+<select id="selectDiaryAll" parameterType="cn.cat.query.LimitQuery" resultMap="Diary">
+select 
+   d.`diaryid`,
+   d.`posttime`,
+   d.`title`,
+   d.`content`,
+   c.`catid`,
+   c.`catname`,
+   c.`userid`,
+   c.`username`
+
+ from `diary` d 
+ Left Join `cat` c on c.catid=d.catid 
+ LIMIT #{start},#{total}
+
+</select>
 </mapper>
